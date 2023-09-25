@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "name": "mangae_account",
+    "build": [{
+        "src": "servser.js",
+        "use": "@vercel/node"
+    }],
+    "routes": [{
+        "src": "/(.*)",
+        "dest": "/servser.js"
+    }]
+}
