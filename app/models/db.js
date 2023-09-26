@@ -1,5 +1,5 @@
 const mysql = require("mysql2");
-const dbConfig = require("../config/db.config");
+// const dbConfig = require("../config/db.config");
 // const connection = mysql.createConnection({
 //     host: dbConfig.HOST,
 //     user: dbConfig.USER,
@@ -7,7 +7,7 @@ const dbConfig = require("../config/db.config");
 //     database: dbConfig.DB
 // });
 
-//For Planetscale
+// For Planetscale
 require('dotenv').config()
 const connection = mysql.createConnection(process.env.DATABASE_URL)
 
