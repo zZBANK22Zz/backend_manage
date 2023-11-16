@@ -1,6 +1,6 @@
 const authJwt = require("../middleware/auth.jwt");
 module.exports = (app)=>{
-    const user_controller = require("../controllers/user.controller");
+    const user_controller = require("../controllers/user.controllers");
     var router = require("express").Router();
     router.get("/:us", user_controller.validUsername);
     router.post("/signup", user_controller.createNewUser);
