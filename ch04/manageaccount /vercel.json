@@ -1,6 +1,0 @@
-{
-  "routes": [
-    {"handle": "filesystem"},
-    {"sec": "/.*", "dest": "/dev"}
-  ]
-}
