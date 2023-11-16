@@ -4,7 +4,7 @@
   "main": "servser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon servser.js"
+    "dev": "nodemon server.js"
   },
   "author": "Ananthichai S.",
   "license": "ISC",
