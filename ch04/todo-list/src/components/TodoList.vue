@@ -1,5 +1,5 @@
 <template>
-    <div v-if="store.todolist.leghth > 0">
+    <div v-if="store.todolist.leghth > 0" class="q-pt-md">
       <q-list bordered separator>
 
       <q-item clickable v-ripple 

@@ -1,30 +1,32 @@
 const uploadFile = require("../middleware/upload");
-const upload = async (req, res)=>{
+const uploadController = async (req, res)=>{
     try {
         console.log("file controller")
         await uploadFile(req, res);
         if(req.file == undefined){
             return res.status(400).send({
-                massage: "not found the upload file."
+                message: "Not Found the upload file."
             });
         }
         res.status(200).send({
-            massage: "uploadfile successfully: " + req.file.filename,
+            message: "Upload file successfully: " + req.file.filename,
             uploadFileName: req.file.filename
         });
     } catch (error) {
-        res.status(500).send({
-            massage: "Could not upload the file: " + error
+        res.status(500).send({ 
+            message: "Could not upload the file: " + error
         });
     }
 };
-const download = (req, res)=>{
+
+const displayAvatar = (req, res)=>{
     const filename = req.params.name;
     const directoryPath = __basedir + "/assets/";
+    console.log("a:" + directoryPath)
     res.download(directoryPath + filename, filename, (err)=>{
         if(err){
-            res.status(500).send({ massage: "Could not display the file. " + err});
+            res.status(500).send({ message: "Could not display the file. " + err});
         }
     });
 };
-module.exports = { upload, download };
+module.exports = { uploadController, displayAvatar};

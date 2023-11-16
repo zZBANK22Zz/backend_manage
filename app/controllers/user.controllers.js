@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const validUsername = (req, res) =>{
     User.checkUsername(req.params.us, (err, data)=>{
         if(err){
-            if(err, kind == "Not_found"){
+            if(err & err, kind == "Not_found"){
                 res.send({
                     massage: " Not Found: "+ req.params.us,
                     valid: true

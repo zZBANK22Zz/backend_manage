@@ -1,54 +1,35 @@
 <template>
-  <q-form @submit.prevent="onSubmit"
-        @reset="onReset"
-        class="q-gutter-md">
-      
-        <q-input
-          filled
-          v-model="todo"
-          label="Type your list *"
-          lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Please type something']"
-        />
-  
-        <div>
-          <q-btn label="ADD" type="submit" color="primary"/>
-          <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-        </div>
-      </q-form>
-  </template>
-    <script>
-    
-    import { defineComponent } from 'vue'
-    import { useTodoListStore } from "src/stores/todolist"
-    
-    export default defineComponent({
-      name: 'TodoForm',
-      data(){
-        return{
-            todo: null,
-            store: useTodoListStore()
-        }
-      },
-      onSubmit(){
-        if(this.todo.length == 0) return;
-        this.store.addTodoList(this.todo);
-        this.todo = "";
-      },
-      onReset(){
-        this.todo = "";
-      },
-      methods:{
-        onSubmit(){
-          console.log("todo: " + this.todo);
-          if(this.todo.length == 0 ) return;
-          this.store.addTodoList(this.todo);
-          this.todo = "";
+  <div v-if="store.todoList.length > 0" class="q-pt-md">
+    <q-list bordered separator>
+      <q-item clickable v-ripple v-for="todo in store.todoList" :key="todo.id">
+      <q-item-section :class="{ completedClass: todo.completed }">{{ todo.item }}</q-item-section>
+      <q-item-section avatar>
+        <q-icon
+        color="primary"
+        name="check"
+        @click.stop="store.toggleCompleted(todo.id)" />
+  </q-item-section>
+        <q-item-section avatar>
+              <q-icon
+              name="delete"
+              color="primary"
+            @click="store.deleteTodo(todo.id)" />
+        </q-item-section>
+      </q-item>
+    </q-list>
+  </div>
+</template>
+  <script>
+  import { useTodoListStore } from "../stores/useTodoListStore";
+  export default {
+      name: "TodoList",
+      data() {
+        return { store: useTodoListStore() };
         },
-        onReset(){
-          this.todo = "";
-        }
-      }
-    })
-    
-    </script>
+      };
+  </script>
+  <style>
+  .completedClass {
+  text-decoration: line-through;
+  }
+  </style>
