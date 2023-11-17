@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "mangae_account",
+    "name": "account-rest",
     "builds": [{
         "src": "server.js",
         "use": "@vercel/node"
