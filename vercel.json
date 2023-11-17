@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "manage_account_api",
+    "name": "mangae_account",
     "builds": [{
         "src": "server.js",
         "use": "@vercel/node"
