@@ -2,11 +2,11 @@
     "version": 2,
     "name": "manage_account_api",
     "builds": [{
-        "src": "servser.js",
+        "src": "server.js",
         "use": "@vercel/node"
     }],
     "routes": [{
         "src": "/(.*)",
-        "dest": "/serv=er.js"
+        "dest": "/server.js"
     }]
 }
